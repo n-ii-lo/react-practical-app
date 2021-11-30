@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import AddPosForm from "./Components/addPostForm";
 // import Counter from "./Components/Counter";
-import Post from "./Components/PostItem";
 import Postlist from "./Components/PostList";
 import "./Styles/style.css";
 
@@ -11,9 +11,14 @@ function App() {
     { id: 3, title: "C++", body: "Description" },
   ]);
 
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost]);
+  };
+
   return (
     <div className='App'>
-      <Postlist posts={posts} />
+      <AddPosForm create={createPost} />
+      <Postlist posts={posts} title='Список постов' />
     </div>
   );
 }
